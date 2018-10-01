@@ -32,5 +32,11 @@ namespace NodeServicesExample.Controllers
             var data = await _nodeServices.InvokeAsync<byte[]>("Scripts/QR.js", text);
             return File(data, "image/png");
         }
+
+        [HttpGet("bilkom")]
+        public async Task<string[]> Bilkom(string stationName = "Ols")
+        {
+             return await _nodeServices.InvokeAsync<string[]>("Scripts/bilkom.js", stationName);
+        }
     }
 }
